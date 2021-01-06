@@ -78,17 +78,7 @@ var PI = Math.PI;
 function INT(d) {
 	return Math.floor(d);
 }
-// tinh toan julian Date  number
-///https://en.wikipedia.org/wiki/Julian_calendar
-//JDN = (1461 × (Y + 4800 + (M − 14)/12))/4 +(367 × (M − 2 − 12 × ((M − 14)/12)))/12 − (3 × ((Y + 4900 + (M - 14)/12)/100))/4 + D − 32075
-function jdn(dd, mm, yy) {
-	var a = INT((14 - mm) / 12);
-	var y = yy+4800-a;
-	var m = mm+12*a-3;
-	var jd = dd + INT((153*m+2)/5) + 365*y + INT(y/4) - INT(y/100) + INT(y/400) - 32045;
-	return jd;
-	
-}
+
 
 
 
@@ -127,19 +117,6 @@ function decodeLunarYear(yy, k) {
 	return ly;
 }
 
-function getYearInfo(yyyy) {
-	var yearCode;
-	if (yyyy < 1900) {
-		yearCode = TK19[yyyy - 1800];
-	} else if (yyyy < 2000) {
-		yearCode = TK20[yyyy - 1900];
-	} else if (yyyy < 2100) {
-		yearCode = TK21[yyyy - 2000];
-	} else {
-		yearCode = TK22[yyyy - 2100];
-	}
-	return decodeLunarYear(yyyy, yearCode);
-}
 
 var FIRST_DAY = jdn(25, 1, 1800); // Tet am lich 1800
 var LAST_DAY = jdn(31, 12, 2199);
@@ -213,41 +190,7 @@ var currentYear = today.getFullYear();
 
 
 
-function getMonth(mm, yy) {
-	var ly1, ly2, tet1, jd1, jd2, mm1, yy1, result, i;
-	if (mm < 12) {
-		mm1 = mm + 1;
-		yy1 = yy;
-	} else {
-		mm1 = 1;
-		yy1 = yy + 1;
-	}
-	jd1 = jdn(1, mm, yy);
-	jd2 = jdn(1, mm1, yy1);
-	ly1 = getYearInfo(yy);
-	//alert('1/'+mm+'/'+yy+' = '+jd1+'; 1/'+mm1+'/'+yy1+' = '+jd2);
-	tet1 = ly1[0].jd;
-	result = new Array();
-	if (tet1 <= jd1) { /* tet(yy) = tet1 < jd1 < jd2 <= 1.1.(yy+1) < tet(yy+1) */
-		for (i = jd1; i < jd2; i++) {
-			result.push(findLunarDate(i, ly1));
-		}
-	} else if (jd1 < tet1 && jd2 < tet1) { /* tet(yy-1) < jd1 < jd2 < tet1 = tet(yy) */
-		ly1 = getYearInfo(yy - 1);
-		for (i = jd1; i < jd2; i++) {
-			result.push(findLunarDate(i, ly1));
-		}
-	} else if (jd1 < tet1 && tet1 <= jd2) { /* tet(yy-1) < jd1 < tet1 <= jd2 < tet(yy+1) */
-		ly2 = getYearInfo(yy - 1);
-		for (i = jd1; i < tet1; i++) {
-			result.push(findLunarDate(i, ly2));
-		}
-		for (i = tet1; i < jd2; i++) {
-			result.push(findLunarDate(i, ly1));
-		}
-	}
-	return result;
-}
+
 
 function getDayName(lunarDate) {
 	if (lunarDate.day == 0) {
@@ -337,13 +280,7 @@ function OutputOptions() {
 }
 
 
-function printMonth(mm, yy) {
-	var res = "";
-	res += printStyle();
-	res += printTable(mm, yy);
-	res += printFoot();
-	return res;
-}
+
 
 function printYear(yy) {
 	var yearName = "N&#x103;m " + getYearCanChi(yy) + " " + yy;
@@ -368,59 +305,8 @@ function printSelectedYear() {
 	return printYear(currentYear);
 }
 
-function printStyle() {
-	var fontSize = PRINT_OPTS.fontSize;
-	var res = "";
-	res += '<style type="text/css">\n';
-	res += '<!--\n';
-	//res += '  body {margin:0}\n';
-	res += '  .tennam {text-align:center; font-size:150%; line-height:120%; font-weight:bold; color:#000000; background-color: #CCCCCC}\n';
-	res += '  .thang {font-size: '+fontSize+'; padding:1; line-height:100%; font-family:Tahoma,Verdana,Arial; table-layout:fixed}\n';
-	res += '  .tenthang {text-align:center; font-size:125%; line-height:100%; font-weight:bold; color:#330033; background-color: #CCFFCC}\n';
-	res += '  .navi-l {text-align:center; font-size:75%; line-height:100%; font-family:Verdana,Times New Roman,Arial; font-weight:bold; color:red; background-color: #CCFFCC}\n';
-	res += '  .navi-r {text-align:center; font-size:75%; line-height:100%; font-family:Verdana,Arial,Times New Roman; font-weight:bold; color:#330033; background-color: #CCFFCC}\n';
-	res += '  .ngaytuan {width:14%; text-align:center; font-size:125%; line-height:100%; color:#330033; background-color: #FFFFCC}\n';
-	res += '  .ngaythang {background-color:#FDFDF0}\n';
-	res += '  .homnay {background-color:#FFF000}\n';
-	res += '  .tet {background-color:#FFCC99}\n';
-	res += '  .am {text-align:right;font-size:75%;line-height:100%;color:blue}\n';
-	res += '  .am2 {text-align:right;font-size:75%;line-height:100%;color:#004080}\n';
-	res += '  .t2t6 {text-align:left;font-size:125%;color:black}\n';
-	res += '  .t7 {text-align:left;font-size:125%;line-height:100%;color:green}\n';
-	res += '  .cn {text-align:left;font-size:125%;line-height:100%;color:red}\n';
-	res += '-->\n';
-	res += '</style>\n';
-	return res;
-}
 
-function printTable(mm, yy) {
-	var i, j, k, solar, lunar, cellClass, solarClass, lunarClass;
-	var currentMonth = getMonth(mm, yy);
-	if (currentMonth.length == 0) return;
-	var ld1 = currentMonth[0];
-	var emptyCells = (ld1.jd + 1) % 7;
-	var MonthHead = mm + "/" + yy;
-	var LunarHead = getYearCanChi(ld1.year);
-	var res = "";
-	res += ('<table class="thang" border="2" cellpadding="1" cellspacing="1" width="'+PRINT_OPTS.tableWidth+'">\n');
-	res += printHead(mm, yy);
-	for (i = 0; i < 6; i++) {
-		res += ("<tr>\n");
-		for (j = 0; j < 7; j++) {
-			k = 7 * i + j;
-			if (k < emptyCells || k >= emptyCells + currentMonth.length) {
-				res += printEmptyCell();
-			} else {
-				solar = k - emptyCells + 1;
-				ld1 = currentMonth[k - emptyCells];
-				res += printCell(ld1, solar, mm, yy);
-			}
-		}
-		res += ("</tr>\n");
-	}
-	res += ('</table>\n');
-	return res;
-}
+
 
 function getPrevMonthLink(mm, yy) {
 	var mm1 = mm > 1 ? mm-1 : 12;
@@ -504,11 +390,6 @@ function printCell(lunarDate, solarDate, solarMonth, solarYear) {
 	return res;
 }
 
-function printFoot() {
-	var res = "";
-	res += '<script language="JavaScript" src="TimePicker.js"></script>\n';
-	return res;
-}
 
 
 
@@ -540,6 +421,127 @@ function alertAbout() {
 function showCalander() {
 	window.status = getCurrentTime() + " -+- " + getTodayString();
 	window.window.setTimeout("showCalander()",5000);
+}
+// print ra the script cuoi html 
+function printFoot() {
+	var res = "";
+	res += '<script language="JavaScript" src="TimePicker.js"></script>\n';
+	return res;
+}
+// tinh toan the ki -> suy ra code cua nam -> decode -> info 
+function getYearInfo(yyyy) {
+	var yearCode;
+	if (yyyy < 1900) {
+		yearCode = TK19[yyyy - 1800];
+	} else if (yyyy < 2000) {
+		yearCode = TK20[yyyy - 1900];
+	} else if (yyyy < 2100) {
+		yearCode = TK21[yyyy - 2000];
+	} else {
+		yearCode = TK22[yyyy - 2100];
+	}
+	return decodeLunarYear(yyyy, yearCode);
+}
+
+function getMonth(mm, yy) {
+	var ly1, ly2, tet1, jd1, jd2, mm1, yy1, result, i;
+	if (mm < 12) {
+		mm1 = mm + 1;
+		yy1 = yy;
+	} else {
+		mm1 = 1;
+		yy1 = yy + 1;
+	}
+	jd1 = jdn(1, mm, yy);
+	jd2 = jdn(1, mm1, yy1);
+	ly1 = getYearInfo(yy);
+	//alert('1/'+mm+'/'+yy+' = '+jd1+'; 1/'+mm1+'/'+yy1+' = '+jd2);
+	tet1 = ly1[0].jd;
+	result = new Array();
+	if (tet1 <= jd1) { /* tet(yy) = tet1 < jd1 < jd2 <= 1.1.(yy+1) < tet(yy+1) */
+		for (i = jd1; i < jd2; i++) {
+			result.push(findLunarDate(i, ly1));
+		}
+	} else if (jd1 < tet1 && jd2 < tet1) { /* tet(yy-1) < jd1 < jd2 < tet1 = tet(yy) */
+		ly1 = getYearInfo(yy - 1);
+		for (i = jd1; i < jd2; i++) {
+			result.push(findLunarDate(i, ly1));
+		}
+	} else if (jd1 < tet1 && tet1 <= jd2) { /* tet(yy-1) < jd1 < tet1 <= jd2 < tet(yy+1) */
+		ly2 = getYearInfo(yy - 1);
+		for (i = jd1; i < tet1; i++) {
+			result.push(findLunarDate(i, ly2));
+		}
+		for (i = tet1; i < jd2; i++) {
+			result.push(findLunarDate(i, ly1));
+		}
+	}
+	return result;
+}
+
+// tinh toan de in ra man hinh ngay thang nam am
+function printTable(mm, yy) {
+	var i, j, k, solar, lunar, cellClass, solarClass, lunarClass;
+	var currentMonth = getMonth(mm, yy);
+	if (currentMonth.length == 0) return;
+	var ld1 = currentMonth[0];
+	var emptyCells = (ld1.jd + 1) % 7;
+	var MonthHead = mm + "/" + yy;
+	var LunarHead = getYearCanChi(ld1.year);
+	var res = "";
+	res += ('<table class="thang" border="2" cellpadding="1" cellspacing="1" width="'+PRINT_OPTS.tableWidth+'">\n');
+	res += printHead(mm, yy);
+	for (i = 0; i < 6; i++) {
+		res += ("<tr>\n");
+		for (j = 0; j < 7; j++) {
+			k = 7 * i + j;
+			if (k < emptyCells || k >= emptyCells + currentMonth.length) {
+				res += printEmptyCell();
+			} else {
+				solar = k - emptyCells + 1;
+				ld1 = currentMonth[k - emptyCells];
+				res += printCell(ld1, solar, mm, yy);
+			}
+		}
+		res += ("</tr>\n");
+	}
+	res += ('</table>\n');
+	return res;
+}
+
+/// style cua file html
+function printStyle() {
+	var fontSize = PRINT_OPTS.fontSize;
+	var res = "";
+	res += '<style type="text/css">\n';
+	res += '<!--\n';
+	//res += '  body {margin:0}\n';
+	res += '  .tennam {text-align:center; font-size:150%; line-height:120%; font-weight:bold; color:#000000; background-color: #CCCCCC}\n';
+	res += '  .thang {font-size: '+fontSize+'; padding:1; line-height:100%; font-family:Tahoma,Verdana,Arial; table-layout:fixed}\n';
+	res += '  .tenthang {text-align:center; font-size:125%; line-height:100%; font-weight:bold; color:#330033; background-color: #CCFFCC}\n';
+	res += '  .navi-l {text-align:center; font-size:75%; line-height:100%; font-family:Verdana,Times New Roman,Arial; font-weight:bold; color:red; background-color: #CCFFCC}\n';
+	res += '  .navi-r {text-align:center; font-size:75%; line-height:100%; font-family:Verdana,Arial,Times New Roman; font-weight:bold; color:#330033; background-color: #CCFFCC}\n';
+	res += '  .ngaytuan {width:14%; text-align:center; font-size:125%; line-height:100%; color:#330033; background-color: #FFFFCC}\n';
+	res += '  .ngaythang {background-color:#FDFDF0}\n';
+	res += '  .homnay {background-color:#FFF000}\n';
+	res += '  .tet {background-color:#FFCC99}\n';
+	res += '  .am {text-align:right;font-size:75%;line-height:100%;color:blue}\n';
+	res += '  .am2 {text-align:right;font-size:75%;line-height:100%;color:#004080}\n';
+	res += '  .t2t6 {text-align:left;font-size:125%;color:black}\n';
+	res += '  .t7 {text-align:left;font-size:125%;line-height:100%;color:green}\n';
+	res += '  .cn {text-align:left;font-size:125%;line-height:100%;color:red}\n';
+	res += '-->\n';
+	res += '</style>\n';
+	return res;
+}
+
+
+function printMonth(mm, yy) {
+	var res = "";
+	res += printStyle();
+	res += printTable(mm, yy);
+	res += printFoot();
+	return res;
 }
 
 /// split string  yy=2021&mm=12 -> arr 
