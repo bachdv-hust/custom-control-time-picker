@@ -170,9 +170,9 @@ function getLunarDate(dd, mm, yyyy) {
 	return findLunarDate(jd, ly);
 }
 
-/* Compute the longitude of the sun at any time.
- * Parameter: floating number jdn, the number of days since 1/1/4713 BC noon
- * Algorithm from: "Astronomical Algorithms" by Jean Meeus, 1998
+/* Tính toán kinh độ của mặt trời bất kỳ lúc nào.
+ * Tham số: jdn số nổi, số ngày kể từ ngày 1/1/4713 TCN
+ * Thuật toán từ: "Các thuật toán thiên văn" của Jean Meeus, 1998
  */
 function SunLongitude(jdn) {
 	var T, T2, dr, M, L0, DL, lambda, theta, omega;
@@ -193,11 +193,11 @@ function SunLongitude(jdn) {
     return lambda;
 }
 
-/* Compute the sun segment at start (00:00) of the day with the given integral Julian day number.
- * The time zone if the time difference between local time and UTC: 7.0 for UTC+7:00.
- * The function returns a number between 0 and 23.
- * From the day after March equinox and the 1st major term after March equinox, 0 is returned.
- * After that, return 1, 2, 3 ...
+/*Tính phân đoạn mặt trời tại thời điểm bắt đầu (00:00) trong ngày với số ngày Julian tích phân đã cho.
+ * Múi giờ nếu chênh lệch thời gian giữa giờ địa phương và UTC: 7,0 đối với UTC + 7: 00.
+ * Hàm trả về một số từ 0 đến 23.
+ * Kể từ ngày sau điểm phân tháng 3 và kỳ hạn chính đầu tiên sau ngày phân tháng 3, số 0 được trả về.
+ * Sau đó, trả về 1, 2, 3 ...
  */
 // tinh toan 
 function getSunLongitude(dayNumber, timeZone) {
@@ -205,7 +205,6 @@ function getSunLongitude(dayNumber, timeZone) {
 }
 
 var today = new Date();
-//var currentLunarYear = getYearInfo(today.getFullYear());
 var currentLunarDate = getLunarDate(today.getDate(), today.getMonth()+1, today.getFullYear());
 var currentMonth = today.getMonth()+1;
 var currentYear = today.getFullYear();
@@ -543,7 +542,7 @@ function showCalander() {
 	window.window.setTimeout("showCalander()",5000);
 }
 
-
+/// split string  yy=2021&mm=12 -> arr 
 function parseQuery(q) {
 	var ret = new Array();
 	if (q.length < 2) return ret;
@@ -558,9 +557,10 @@ function parseQuery(q) {
 	}
 	return ret;
 }
-
+/// -> tinh ra  thang nam dang querry 
 function getSelectedMonth() {
 	var query = window.location.search;
+	// get query vd : https://TimePicker.html?yy=2021&mm=12 -> query = yy=2021&mm=12
 	var arr = parseQuery(query);
 	var idx;
 	for (idx = 0; idx < arr.length; idx++) {
