@@ -2,7 +2,7 @@
 
 var ABOUT = "\u00C2m l\u1ECBch Vi\u1EC7t Nam - Duong Van Bach  - Nguyen Gia Minh";
 var TK19 = new Array(
-	/** day la ma hex cua cac nam tu 1901 ....  */
+	/** day la ki tu cua cac nam tu 1901 ....  */
 	0x30baa3, 0x56ab50, 0x422ba0, 0x2cab61, 0x52a370, 0x3c51e8, 0x60d160, 0x4ae4b0, 0x376926, 0x58daa0,
 	0x445b50, 0x3116d2, 0x562ae0, 0x3ea2e0, 0x28e2d2, 0x4ec950, 0x38d556, 0x5cb520, 0x46b690, 0x325da4,
 	0x5855d0, 0x4225d0, 0x2ca5b3, 0x52a2b0, 0x3da8b7, 0x60a950, 0x4ab4a0, 0x35b2a5, 0x5aad50, 0x4455b0,
@@ -13,7 +13,7 @@ var TK19 = new Array(
 	0x3cea6a, 0x62da90, 0x4e5ad0, 0x392ad6, 0x5e2ae0, 0x4892e0, 0x32cad5, 0x56c950, 0x40d4a0, 0x2bd4a3,
 	0x50b690, 0x3a57a7, 0x6055b0, 0x4c25d0, 0x3695b5, 0x5a92b0, 0x44a950, 0x2ed954, 0x54b4a0, 0x3cb550,
 	0x286b52, 0x4e55b0, 0x3a2776, 0x5e2570, 0x4852b0, 0x32aaa5, 0x56e950, 0x406aa0, 0x2abaa3, 0x50ab50
-); /* Years 2000-2099 */
+); 
 
 var TK20 = new Array(
 	0x3c4bd8, 0x624ae0, 0x4ca570, 0x3854d5, 0x5cd260, 0x44d950, 0x315554, 0x5656a0, 0x409ad0, 0x2a55d2,
@@ -26,7 +26,7 @@ var TK20 = new Array(
 	0x4896d0, 0x344dd5, 0x5a4ad0, 0x42a4d0, 0x2cd4b4, 0x52b250, 0x3cd558, 0x60b540, 0x4ab5a0, 0x3755a6,
 	0x5c95b0, 0x4649b0, 0x30a974, 0x56a4b0, 0x40aa50, 0x29aa52, 0x4e6d20, 0x39ad47, 0x5eab60, 0x489370,
 	0x344af5, 0x5a4970, 0x4464b0, 0x2c74a3, 0x50ea50, 0x3d6a58, 0x6256a0, 0x4aaad0, 0x3696d5, 0x5c92e0
-); /* Years 1900-1999 */
+);
 
 var TK21 = new Array(
 	0x46c960, 0x2ed954, 0x54d4a0, 0x3eda50, 0x2a7552, 0x4e56a0, 0x38a7a7, 0x5ea5d0, 0x4a92b0, 0x32aab5,
@@ -39,7 +39,7 @@ var TK21 = new Array(
 	0x5252b0, 0x3ca9b8, 0x62a930, 0x4ab490, 0x34b6a6, 0x5aad50, 0x4655a0, 0x2eab64, 0x54a570, 0x4052b0,
 	0x2ab173, 0x4e6930, 0x386b37, 0x5e6aa0, 0x48ad50, 0x332ad5, 0x582b60, 0x42a570, 0x2e52e4, 0x50d160,
 	0x3ae958, 0x60d520, 0x4ada90, 0x355aa6, 0x5a56d0, 0x462ae0, 0x30a9d4, 0x54a2d0, 0x3ed150, 0x28e952
-); /* Years 2000-2099 */
+); 
 
 var TK22 = new Array(
 		0x4eb520, 0x38d727, 0x5eada0, 0x4a55b0, 0x362db5, 0x5a45b0, 0x44a2b0, 0x2eb2b4, 0x54a950, 0x3cb559,
@@ -52,8 +52,7 @@ var TK22 = new Array(
 		0x5c6950, 0x4674a0, 0x31b2a5, 0x54ad50, 0x4055a0, 0x2aab73, 0x522570, 0x3a5377, 0x6052b0, 0x4a6950,
 		0x346d56, 0x585aa0, 0x42ab50, 0x2e56d4, 0x544ae0, 0x3ca570, 0x2864d2, 0x4cd260, 0x36eaa6, 0x5ad550,
 		0x465aa0, 0x30ada5, 0x5695d0, 0x404ad0, 0x2aa9b3, 0x50a4d0, 0x3ad2b7, 0x5eb250, 0x48b540, 0x33d556
-); /* Years 2100-2199 */
-/// ki tu utf16 
+); 
 var CAN = new Array("Gi\341p", "\u1EA4t", "B\355nh", "\u0110inh", "M\u1EADu", "K\u1EF7", "Canh", "T\342n", "Nh\342m", "Qu\375");
 var CHI = new Array("T\375", "S\u1EEDu", "D\u1EA7n", "M\343o", "Th\354n", "T\u1EF5", "Ng\u1ECD", "M\371i", "Th\342n", "D\u1EADu", "Tu\u1EA5t", "H\u1EE3i");
 var TUAN = new Array("Ch\u1EE7 nh\u1EADt", "Th\u1EE9 hai", "Th\u1EE9 ba", "Th\u1EE9 t\u01B0", "Th\u1EE9 n\u0103m", "Th\u1EE9 s\341u", "Th\u1EE9 b\u1EA3y");
@@ -64,7 +63,7 @@ var TIETKHI = new Array("Xu\u00E2n ph\u00E2n", "Thanh minh", "C\u1ED1c v\u0169",
 	"\u0110\u00F4ng ch\u00ED", "Ti\u1EC3u h\u00E0n", "\u0110\u1EA1i h\u00E0n", "L\u1EADp xu\u00E2n", "V\u0169 Th\u1EE7y", "Kinh tr\u1EADp"
 );
 
-/* Create lunar date object, stores (lunar) date, month, year, leap month indicator, and Julian date number */
+// lich  am 
 function LunarDate(day, month, year, leapMonth, julianDate) {
 	this.day = day;
 	this.month = month;
@@ -75,46 +74,23 @@ function LunarDate(day, month, year, leapMonth, julianDate) {
 
 var PI = Math.PI;
 
-/* Discard the fractional part of a number, e.g., INT(3.2) = 3 */
+// lay phan nguyen
 function INT(d) {
 	return Math.floor(d);
 }
-
+// tinh toan julian Date  number
+///https://en.wikipedia.org/wiki/Julian_calendar
+//JDN = (1461 × (Y + 4800 + (M − 14)/12))/4 +(367 × (M − 2 − 12 × ((M − 14)/12)))/12 − (3 × ((Y + 4900 + (M - 14)/12)/100))/4 + D − 32075
 function jdn(dd, mm, yy) {
 	var a = INT((14 - mm) / 12);
 	var y = yy+4800-a;
 	var m = mm+12*a-3;
 	var jd = dd + INT((153*m+2)/5) + 365*y + INT(y/4) - INT(y/100) + INT(y/400) - 32045;
 	return jd;
-	//return 367*yy - INT(7*(yy+INT((mm+9)/12))/4) - INT(3*(INT((yy+(mm-9)/7)/100)+1)/4) + INT(275*mm/9)+dd+1721029;
+	
 }
 
-function jdn2date(jd) {
-	var Z, A, alpha, B, C, D, E, dd, mm, yyyy, F;
-	Z = jd;
-	if (Z < 2299161) {
-	  A = Z;
-	} else {
-	  alpha = INT((Z-1867216.25)/36524.25);
-	  A = Z + 1 + alpha - INT(alpha/4);
-	}
-	B = A + 1524;
-	C = INT( (B-122.1)/365.25);
-	D = INT( 365.25*C );
-	E = INT( (B-D)/30.6001 );
-	dd = INT(B - D - INT(30.6001*E));
-	if (E < 14) {
-	  mm = E - 1;
-	} else {
-	  mm = E - 13;
-	}
-	if (mm < 3) {
-	  yyyy = C - 4715;
-	} else {
-	  yyyy = C - 4716;
-	}
-	return new Array(dd, mm, yyyy);
-}
+
 
 function decodeLunarYear(yy, k) {
 	var monthLengths, regularMonths, offsetOfTet, leapMonth, leapMonthLength, solarNY, currentJD, j, mm;
@@ -223,6 +199,7 @@ function SunLongitude(jdn) {
  * From the day after March equinox and the 1st major term after March equinox, 0 is returned.
  * After that, return 1, 2, 3 ...
  */
+// tinh toan 
 function getSunLongitude(dayNumber, timeZone) {
 	return INT(SunLongitude(dayNumber - 0.5 - timeZone/24.0) / PI * 12);
 }
@@ -233,33 +210,9 @@ var currentLunarDate = getLunarDate(today.getDate(), today.getMonth()+1, today.g
 var currentMonth = today.getMonth()+1;
 var currentYear = today.getFullYear();
 
-function parseQuery(q) {
-	var ret = new Array();
-	if (q.length < 2) return ret;
-	var s = q.substring(1, q.length);
-	var arr = s.split("&");
-	var i, j;
-	for (i = 0; i < arr.length; i++) {
-		var a = arr[i].split("=");
-		for (j = 0; j < a.length; j++) {
-			ret.push(a[j]);
-		}
-	}
-	return ret;
-}
 
-function getSelectedMonth() {
-	var query = window.location.search;
-	var arr = parseQuery(query);
-	var idx;
-	for (idx = 0; idx < arr.length; idx++) {
-		if (arr[idx] == "mm") {
-			currentMonth = parseInt(arr[idx+1]);
-		} else if (arr[idx] == "yy") {
-			currentYear = parseInt(arr[idx+1]);
-		}
-	}
-}
+
+
 
 function getMonth(mm, yy) {
 	var ly1, ly2, tet1, jd1, jd2, mm1, yy1, result, i;
@@ -384,23 +337,6 @@ function OutputOptions() {
 	this.tableWidth = "135px";
 }
 
-function setOutputSize(size) {
-	var idx = 1;
-	if (size == "small") {
-		idx = 0;
-	} else if (size == "big") {
-		idx = 2;
-	} else {
-		idx = 1;
-	}
-	PRINT_OPTS.fontSize = FONT_SIZES[idx];
-	PRINT_OPTS.tableWidth = TAB_WIDTHS[idx];
-}
-
-function printSelectedMonth() {
-	getSelectedMonth();
-	return printMonth(currentMonth, currentYear);
-}
 
 function printMonth(mm, yy) {
 	var res = "";
@@ -571,7 +507,7 @@ function printCell(lunarDate, solarDate, solarMonth, solarYear) {
 
 function printFoot() {
 	var res = "";
-	res += '<script language="JavaScript" src="amlich-hnd.js"></script>\n';
+	res += '<script language="JavaScript" src="TimePicker.js"></script>\n';
 	return res;
 }
 
@@ -590,11 +526,11 @@ function infoCellSelect(id) {
 function alertDayInfo(dd, mm, yy, leap, jd, sday, smonth, syear) {
 	var lunar = new LunarDate(dd, mm, yy, leap, jd);
 	var s = getDayString(lunar, sday, smonth, syear);
-	s += " \u00E2m l\u1ECBch\n";
+	s += " \u00E2m l\u1ECBch\n";// Am lich
 	s += getDayName(lunar);
-	s += "\nGi\u1EDD \u0111\u1EA7u ng\u00E0y: "+getCanHour0(jd)+" "+CHI[0];
-	s += "\nTi\u1EBFt: "+TIETKHI[getSunLongitude(jd+1, 7.0)];
-	s += "\nGi\u1EDD ho\u00E0ng \u0111\u1EA1o: "+getGioHoangDao(jd);
+	s += "\nGi\u1EDD \u0111\u1EA7u ng\u00E0y: "+getCanHour0(jd)+" "+CHI[0];// Gio dau ngay
+	s += "\nTi\u1EBFt: "+TIETKHI[getSunLongitude(jd+1, 7.0)];// tiet khi
+	s += "\nGi\u1EDD ho\u00E0ng \u0111\u1EA1o: "+getGioHoangDao(jd);/// Gio hoang dao 
 	alert(s);
 }
 
@@ -605,4 +541,51 @@ function alertAbout() {
 function showCalander() {
 	window.status = getCurrentTime() + " -+- " + getTodayString();
 	window.window.setTimeout("showCalander()",5000);
+}
+
+
+function parseQuery(q) {
+	var ret = new Array();
+	if (q.length < 2) return ret;
+	var s = q.substring(1, q.length);
+	var arr = s.split("&");
+	var i, j;
+	for (i = 0; i < arr.length; i++) {
+		var a = arr[i].split("=");
+		for (j = 0; j < a.length; j++) {
+			ret.push(a[j]);
+		}
+	}
+	return ret;
+}
+
+function getSelectedMonth() {
+	var query = window.location.search;
+	var arr = parseQuery(query);
+	var idx;
+	for (idx = 0; idx < arr.length; idx++) {
+		if (arr[idx] == "mm") {
+			currentMonth = parseInt(arr[idx+1]);
+		} else if (arr[idx] == "yy") {
+			currentYear = parseInt(arr[idx+1]);
+		}
+	}
+}
+/// set size cua text va tab width 
+function setOutputSize(size) {
+	var idx = 1;
+	if (size == "small") {
+		idx = 0;
+	} else if (size == "big") {
+		idx = 2;
+	} else {
+		idx = 1;
+	}
+	PRINT_OPTS.fontSize = FONT_SIZES[idx];
+	PRINT_OPTS.tableWidth = TAB_WIDTHS[idx];
+}
+// Sau khi set text size thi chay vao ham nay ->
+function printSelectedMonth() {
+	getSelectedMonth();
+	return printMonth(currentMonth, currentYear);
 }
